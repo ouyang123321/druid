@@ -1,0 +1,134 @@
+/***Default theme***/
+/***Reset and overrides***/
+body {
+  background-color: #5D6FB2 !important;/*背景颜色 底部可以看出*/
+}
+/***Page header***/
+.header .navbar-inner {
+  filter: none !important;
+  background-image: none !important;
+  background-color: #5D6FB2 !important;/*顶部导航栏 背景色*/
+}
+.header .btn-navbar {
+  background-color: #ADB9EC !important;/*菜单横向时的隐性按钮的颜色*/
+}
+.header .nav .dropdown-toggle:hover,
+.header .nav .dropdown.open .dropdown-toggle {
+  background-color: #ADB9EC !important;
+}
+.header .nav li.dropdown .dropdown-toggle i {
+  color: lightgrey !important;/*头部菜单栏的图标*/
+}
+/***Page sidebar***/
+.page-sidebar {
+  background-color: #5D6FB2;/*左侧能点击菜单原始的颜色*/
+}
+ul.page-sidebar-menu > li > a {
+  border-top: 1px solid #424e78 !important;/*左侧横线条颜色*/
+  color: #000000 !important;/*左侧字体颜色*/
+}
+ul.page-sidebar-menu > li:last-child > a {
+  border-bottom: 1px solid transparent !important;
+}
+ul.page-sidebar-menu > li a i {
+  color: rgb(74, 72, 75);/*左侧小图标的颜色*/
+}
+ul.page-sidebar-menu > li.open > a,
+ul.page-sidebar-menu > li > a:hover,
+ul.page-sidebar-menu > li:hover > a {
+  background: #ADB9EC;/*左侧鼠标移上去样式*/
+}
+ul.page-sidebar-menu > li.active > a {
+  background: #ADB9EC !important;/*左侧点击显示首页的样式*/
+  border-top-color: transparent !important;
+  color: #ffffff;
+}
+ul.page-sidebar-menu > li.active > a i {
+  color: #000000;/*左侧首页选中的小图标的颜色*/
+}
+ul.page-sidebar-menu > li > ul.sub-menu > li:first-child > a {
+  border-top: 0px !important;
+}
+ul.page-sidebar-menu > li > ul.sub-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu > li > a:hover {
+  color: #000000 !important;/*左侧二级菜单鼠标移上去字体的颜色*/
+  background: #ADB9EC !important;/*左侧展开菜单选中后的样式*/
+}
+ul.page-sidebar-menu > li > ul.sub-menu > li > a:hover {
+  background: #ADB9EC !important;/*左侧菜单二级鼠标移上去样式*/
+}
+/* 3rd level sub menu */
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li > a:hover,
+ul.page-sidebar-menu > li > ul.sub-menu li.open > a {
+  color: #000000 !important;/*左侧三级菜单鼠标移上去字体的颜色*/
+  background: #ADB9EC !important;/*左侧菜单三级鼠标移上去样式*/
+}
+/* font color for all sub menu links*/
+ul.page-sidebar-menu li > ul.sub-menu > li > a {
+  color: #000000;/*左侧菜单下一级显示的字体颜色*/
+}
+/* menu arrows */
+ul.page-sidebar-menu > li > a .arrow:before,
+ul.page-sidebar-menu > li > a .arrow.open:before {
+  color: #000000 !important;/*左侧一级菜单箭头原始的颜色*/
+}
+ul.page-sidebar-menu > li > ul.sub-menu a .arrow:before,
+ul.page-sidebar-menu > li > ul.sub-menu a .arrow.open:before {
+  color: #000000 !important;/*左侧二级级菜单箭头原始的颜色*/
+}
+ul.page-sidebar-menu > li > a > .arrow.open:before {
+  color: #000000 !important;/*左侧一级菜单箭头选中的颜色*/
+}
+ul.page-sidebar-menu > li.active > a .arrow:before,
+ul.page-sidebar-menu > li.active > a .arrow.open:before {
+  color: #000000 !important;/*左侧，选中其他页面时 箭头的样式*/
+}
+
+/***Sidebar toggler***/
+.sidebar-toggler {
+  background-image: url(../image/sidebar-toggler.jpg);
+  background-color: #242424;
+}
+
+/* sub menu bg color on hover menu item */
+.page-sidebar-closed ul.page-sidebar-menu > li:hover .sub-menu {
+  background-color: #5D6FB2;/*收缩子菜单bg颜色的悬停菜单项*/
+}
+
+/***Footer ***/
+.footer .footer-inner {/*脚部字体版权*/
+  color: #000000;
+}
+.footer .footer-tools .go-top {/*脚部向上箭头的阴影部分*/
+  background-color: #ADB9EC;
+}
+.footer .footer-tools .go-top:hover {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.footer .footer-tools .go-top i {/*底部向上箭头*/
+  color: #000000;
+}
+
+/***Landscape phone to portrait tablet 横向手机到人像平板电脑***/
+@media (max-width: 979px) {
+  /***  page sidebar    页面侧边栏***/
+  .page-sidebar {/*隐形的横向菜单显示之后背景颜色*/
+    background-color: #5D6FB2 !important;
+  }
+  ul.page-sidebar-menu > li > a {
+    border-top: 1px solid #4a4a4a !important;
+  }
+  ul.page-sidebar-menu > li:last-child > a {
+    border-bottom: 0 !important;
+  }
+  .page-sidebar .sidebar-search input {
+    background-color: #5D6FB2 !important;/*横向隐形菜单展开之后，搜索框的背景颜色*/
+  }
+  ul.page-sidebar-menu > li.open > a,
+  ul.page-sidebar-menu > li > a:hover,
+  ul.page-sidebar-menu > li:hover > a {
+    background: #ADB9EC;/* 横向隐性菜单展开后，鼠标移上去的样式颜色*/
+  }
+}

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tlzx.combine.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.tlzx.combine.model.User" >
+    <constructor >
+      <idArg column="uid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ugid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="unumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="upwd" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="upost" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="utel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="umail" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="user_set_time" jdbcType="DATE" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+
+  <resultMap id="row" type="com.tlzx.combine.model.User" >
+      <result column="uid" property="uid" javaType="java.lang.Integer" />
+      <result column="ugid" property="ugid" javaType="java.lang.Integer" />
+      <result column="unumber" property="unumber" javaType="java.lang.String" />
+      <result column="uname" property="uname" javaType="java.lang.String" />
+      <result column="upwd" property="upwd" javaType="java.lang.String" />
+      <result column="upost" property="upost" javaType="java.lang.String" />
+      <result column="utel" property="utel" javaType="java.lang.String" />
+      <result column="umail" property="umail" javaType="java.lang.String" />
+      <result column="userSetTime" property="userSetTime" javaType="java.util.Date" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uid, ugid, unumber, uname, upwd, upost, utel, umail, user_set_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tlzx_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <select id="userLogin" resultMap="row">
+    select *
+    from tlzx_user
+    where upwd = #{upwd,jdbcType=VARCHAR} and unumber = #{unumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tlzx_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.tlzx.combine.model.User" >
+    insert into tlzx_user (uid, ugid, unumber, 
+      uname, upwd, upost, 
+      utel, umail, user_set_time
+      )
+    values (#{uid,jdbcType=INTEGER}, #{ugid,jdbcType=INTEGER}, #{unumber,jdbcType=VARCHAR}, 
+      #{uname,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR}, #{upost,jdbcType=VARCHAR}, 
+      #{utel,jdbcType=VARCHAR}, #{umail,jdbcType=VARCHAR}, #{userSetTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tlzx.combine.model.User" >
+    insert into tlzx_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="ugid != null" >
+        ugid,
+      </if>
+      <if test="unumber != null" >
+        unumber,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="upwd != null" >
+        upwd,
+      </if>
+      <if test="upost != null" >
+        upost,
+      </if>
+      <if test="utel != null" >
+        utel,
+      </if>
+      <if test="umail != null" >
+        umail,
+      </if>
+      <if test="userSetTime != null" >
+        user_set_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="ugid != null" >
+        #{ugid,jdbcType=INTEGER},
+      </if>
+      <if test="unumber != null" >
+        #{unumber,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upwd != null" >
+        #{upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="upost != null" >
+        #{upost,jdbcType=VARCHAR},
+      </if>
+      <if test="utel != null" >
+        #{utel,jdbcType=VARCHAR},
+      </if>
+      <if test="umail != null" >
+        #{umail,jdbcType=VARCHAR},
+      </if>
+      <if test="userSetTime != null" >
+        #{userSetTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tlzx.combine.model.User" >
+    update tlzx_user
+    <set >
+      <if test="ugid != null" >
+        ugid = #{ugid,jdbcType=INTEGER},
+      </if>
+      <if test="unumber != null" >
+        unumber = #{unumber,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upwd != null" >
+        upwd = #{upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="upost != null" >
+        upost = #{upost,jdbcType=VARCHAR},
+      </if>
+      <if test="utel != null" >
+        utel = #{utel,jdbcType=VARCHAR},
+      </if>
+      <if test="umail != null" >
+        umail = #{umail,jdbcType=VARCHAR},
+      </if>
+      <if test="userSetTime != null" >
+        user_set_time = #{userSetTime,jdbcType=DATE},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tlzx.combine.model.User" >
+    update tlzx_user
+    set ugid = #{ugid,jdbcType=INTEGER},
+      unumber = #{unumber,jdbcType=VARCHAR},
+      uname = #{uname,jdbcType=VARCHAR},
+      upwd = #{upwd,jdbcType=VARCHAR},
+      upost = #{upost,jdbcType=VARCHAR},
+      utel = #{utel,jdbcType=VARCHAR},
+      umail = #{umail,jdbcType=VARCHAR},
+      user_set_time = #{userSetTime,jdbcType=DATE}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

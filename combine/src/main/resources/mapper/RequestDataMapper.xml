@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tlzx.combine.mapper.RequestDataMapper" >
+  <resultMap id="BaseResultMap" type="com.tlzx.combine.model.RequestData" >
+    <constructor >
+      <arg column="type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="persistent" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="fn" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="arg1" jdbcType="BIT" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.tlzx.combine.model.RequestData" >
+    insert into request_data (type, url, persistent, 
+      fn, arg1)
+    values (#{type,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{persistent,jdbcType=BIT}, 
+      #{fn,jdbcType=VARCHAR}, #{arg1,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tlzx.combine.model.RequestData" >
+    insert into request_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="persistent != null" >
+        persistent,
+      </if>
+      <if test="fn != null" >
+        fn,
+      </if>
+      <if test="arg1 != null" >
+        arg1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="persistent != null" >
+        #{persistent,jdbcType=BIT},
+      </if>
+      <if test="fn != null" >
+        #{fn,jdbcType=VARCHAR},
+      </if>
+      <if test="arg1 != null" >
+        #{arg1,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

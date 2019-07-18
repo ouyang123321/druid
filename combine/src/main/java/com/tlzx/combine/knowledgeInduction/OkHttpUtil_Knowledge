@@ -1,0 +1,68 @@
+一：String、StringBuilder、StringBuffer三者的区别
+①执行速度：StringBuilder>StringBuffer>String
+原因：String字符串常量，而StringBuilder、StringBuffer均为字符串变量，即String不可更改，后两者对象可以更改。
+String str="a";     str=str+"b";
+这里其实创建了两个str对象，前者值为a，后者拼接上前者值为ab，然后jvm的垃圾回收机制GC就将前者回收掉了，所以其实前者并没有改动，而是创建了一个新的对象并将久对象回收，所以执行速度比较慢。
+而StringBuilder和StringBuffer则是直接对本身对象进行改动，执行速度快。
+    注：如果我们用以下方式对字符串进行赋值
+    String str="abc"+"d";
+    StringBuilder sb=new StringBuilder().append("abc").append("d");
+    System.out.print(str);
+    System.out.print(sb);
+    那么String的速度要比StringBuilder的快，因为这种方式就相当于String="abcd";但是如果写成String a="abc";String b="d";String c=a+b;则速度比较慢
+
+②线程安全性：StringBuilder不安全，StringBuffer安全。
+如果StringBuffer对象在字符串缓冲区被多个线程使用时，StringBuffer中很多方法有synchronized，可保证线程安全，StringBuilder没有。
+所以要进行的操作时多线程的用StringBuffer，单线程用StringBuilder。
+
+③使用情况
+String：适用于少量的字符串操作情况；
+StringBuilder：适用于单线程下字符串缓冲区进行大量操作的情况；
+StringBuffer：适用于多线程下在字符串缓冲区进行大量操作的情况。
+
+二：Map<String,String>的四种遍历方式
+Map<String,String> map=new HashMap<String,String>();
+①for(String key:map.keySet()){  //通过Map.keySet遍历  普遍使用
+    System.out.print("key="+key+" and value="+map.get(key));
+}
+
+②Iterator<Map.Entry<String,String>> it=map.entrySet().iterator();
+while(it.hasNext()){    //通过Map.entrySet使用iterator遍历key和value
+    Map.Entry<String,String> entry=it.next();
+    System.out.print("key="+entry.getKey()+" and value="+entry.getValue());
+}
+
+③//推荐，尤其是容量大的时候
+for(Map.Entry<String,String> entry:map.entrySet()){ //通过Map.entrySet()遍历key和value
+    System.out.print("key="+entry.getKey()+" and value="+entry.getValue());
+}
+
+④for(String v:map.values()){    //通过Map.values()遍历所有value，但是不能遍历key
+    System.out.print("value="+v);
+}
+
+三：final关键字
+①final修饰类：表示该类不能被继承。
+final类中的成员变量可以根据自己的实际需求设计为final；final中的成员方法都会被隐式指定为final方法。
+注：自己设计类的时候要考虑该类将来是否会被继承，一帮来说工具类我们会设计为final类。在JDK中，String、System被设计为final类
+
+②final修饰方法：表示该方法不能被重写。
+注：一个类的private方法会隐式的被指定为final方法；
+    如果父类中有final修饰的方法，那么子类不能去重写
+
+③final修饰成员变量：必须要赋初始值，并且只能初始化一次。
+final修饰成员变量赋值有两种方式：直接赋值、全部在构造方法中赋值。
+如果final修饰的成员变量是基本类型，则表示这个变量的值不能改变；
+如果修饰的成员变量是一个引用类型，则该引用的地址值不能修改，但是这个引用所指向的对象里面的内容是可以百变的
+
+【
+对Java程序的安全性掌握：Java程序运行的过程：
+类加载器加载程序运行所需要的所有类，它通过区分本机文件系统的类和网络系统导入的类增加安全性，这可以限制任何的特洛伊木马程序。
+因为本机类总是先被加载，一旦所有类被加载完，执行文件的内存划分就固定了。这时候，特定的内存地址被分配给对应的符号引用，查找
+表也被建立，由于内存划分发生在运行时，解释器在受限制的代码区增加保护，防止未授权的访问；然后字节码校验器也进行校验，主要执行下面的检查：类是否符合JVM规范的类文件格式，有没有违反访问限制，代码有没有造成堆栈的上溢或者下溢，
+所有操作代码的参数类型是否都正确的，有没有非法数据类型转换（如将整型数转为对象类型）发生。
+校验通过的字节码被解释器执行，解释器在必要时通过运行系统执行对底层硬件的相应调用
+】
+
+四：static关键字
+①

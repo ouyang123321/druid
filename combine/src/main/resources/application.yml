@@ -1,0 +1,38 @@
+server:
+  port: 8080 #配置访问端口号
+  servlet:
+    context-path: /combine #配置访问时的项目名
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+    url: jdbc:mysql://localhost:3306/tlzx_led?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 123654
+  freemarker:
+    charset: utf-8
+    check-template-location: true #是否检查templates路径是否存在
+    cache: false #是否开启模板缓存
+    template-loader-path: classpath:/templates/ #设置模板的加载路径，都已都好隔开
+    allow-request-override: false #指定httpservletRequest的属性是否可以覆盖controller中model的同名项
+    request-context-attribute: req #指定RequestContext属性的名
+    suffix: .ftl #指定模板的后缀
+    content-type: text/html;charset=utf-8
+    enabled: true #是否允许MVC使用freemaker
+    number_format: 0.##
+  #resources:
+    #static-locations: /static/**  #这种方法行不通
+  mvc:
+    static-path-pattern: /static/**   #这是配置静态资源访问路径（加上classpath:则找不到文件），同时在资源链接上加上项目名即可访问
+
+#
+mybatis:
+  mapperLocations: classpath:mapper/*.xml #xml扫描，多个package用逗号或者分号隔开
+        #又是一个血的教训：mapperLocations原本的配置classpath:src/main/resources/mapper/*.xml
+  typeAliasesPackage: com.tlzx.combine.model
+  #config-location: classpath:src/main/resources/mybatis-config.xml
+
+logging:
+  level: #日志严重级别映射
+    com.tlzxled.terminal.mapper: debug

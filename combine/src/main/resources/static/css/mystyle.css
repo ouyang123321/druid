@@ -1,0 +1,152 @@
+
+            /*   terminal   终端设备    */
+
+.mybody {   /* 功能栏的整体样式 和 portlet-body 一样 */
+    clear: both;
+    padding: 0;
+    background-color:#ADB9EC;
+}
+.back{  /* 功能栏背景颜色 要联合上面的一起用 */
+    background-color:#ADB9EC;
+}
+
+li a{   /*去掉a标签默认的下划线*/
+    text-decoration:none !important;
+}
+li a button {   /*按钮本身的样式*/
+    display: block;
+    border-style: none;
+    margin-top: 13px;
+    margin-left: 3px;
+    background-color: #ADB9EC;
+}
+li a button:hover {    /*鼠标移上去的样式*/
+    background-color: #9aadff !important;
+}
+ul li a button:focus{   /*鼠标点击后的样式*/
+    background-color: #5D6FB2 !important;
+    border-radius:5px !important;
+    border: solid 1px #5D6FB2;
+    outline: none;  /*去掉*/
+}
+.btn_selected{   /*鼠标点击后保持的样式*/
+    background-color: #5D6FB2 !important;
+    border-radius:5px !important;
+    border: solid 1px #5D6FB2;
+}
+button {
+    width: auto;
+    height: 32px;
+    border-radius:5px !important;
+    border: solid 1px ;
+}
+
+.mynav-tabs{*zoom:1}
+.mynav-tabs:before,.mynav-tabs:after{display:table;line-height:0;content:""}
+.mynav-tabs:after{clear:both}.mynav-tabs>li{float:left}
+.mynav-tabs>li>a{line-height:14px}
+/*
+.mynav-tabs>li{margin-bottom:-1px}
+.mynav-tabs>li>a{padding-top:8px;padding-bottom:8px;line-height:20px;border:1px solid transparent;-webkit-border-radius:4px 4px 0 0;-moz-border-radius:4px 4px 0 0;border-radius:4px 4px 0 0}
+.mynav-tabs>li>a:hover,.mynav-tabs>li>a:focus{border-color:#eee #eee #ddd}*/
+
+
+.screenshot{    /* 屏幕截图 按钮样式*/
+    background-color: #0b94ea;/*按钮背景颜色*/
+    color: #ffffff;/*字体颜色*/
+}
+.a1>button:hover {    /*鼠标移上去的样式*/
+    background-color: #0B72B2 !important;
+}
+.screenshot2{
+    background-color: #8395dd;
+    color: #ffffff;
+}
+.a2>button:hover {
+    background-color: #697AB8 !important;
+}
+.screenshot3{
+    background-color: #5961cd;
+    color: #ffffff;
+}
+.a3>button:hover {
+    background-color: #484FA0 !important;
+}
+
+
+.my-portlet-body {   /* 功能栏的整体样式 和 portlet-body 一样 */
+    clear: both;
+    padding: 0;
+    background-color:#ffffff;
+}
+tr{
+    margin-left: 100px;
+}
+td input{
+    width: auto;
+}
+
+/*终端分组页面样式*/
+.terminal-group{
+    background-color: rgba(190, 204, 255, 0.56) !important;
+    margin-right: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+            /*   simple_program   简易节目    */
+
+.top-panel {
+    margin-top: 10px!important;
+    border: 1px solid !important;
+}
+
+            /*  终端分组:terminal_group  */
+.circle{
+    /*position: absolute;*/
+    font-size: 11px !important;
+    width: 30px;
+    /*font-weight: 300;
+    top: 8px;
+    right: 24px;*/
+    text-align: center;
+    height: 14px;
+    background-color: orange;
+    padding: 2px 6px 2px 6px;
+    -webkit-border-radius: 12px !important;
+    -moz-border-radius: 12px !important;
+    border-radius: 20px !important;
+    text-shadow:none !important;
+}
+.circle2{
+    background-color: red
+}
+
+/*警告页面table的样式*/
+table{max-width:100%;background-color:transparent;border-collapse:collapse;border-spacing:0}
+.mytable{width:100%;margin-bottom: -10px;!important;}/*margin-bottom:20px*/
+.mytable th,.mytable td{
+    padding:3px;
+    line-height:20px;
+    text-align:left;
+    vertical-align:top;
+    margin-bottom: -10px
+}
+.mytable_head th,mytable_head td{/*表格头部的内边距*/
+    padding: 8px !important;
+}
+
+
+/*平台logo管理页面的样式 system_logo.html    */
+.upload_logo{
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: lightgray;
+    display: none;
+    position: fixed;
+    opacity: 0.5;
+}
+

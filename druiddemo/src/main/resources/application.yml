@@ -1,0 +1,71 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /druiddemo
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/tlzx_led?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      username: root
+      password: 123654
+      type: com.alibaba.druid.pool.DruidDataSource
+      initial-size: 1
+      max-active: 20
+      min-idle: 1
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT '*'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      filter:
+        commons-log:
+          connection-logger-name: stat,wall,log4j
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+#
+#  redis:
+#    database: 0                           # Redis数据库索引（默认为0 redis有16个库）
+#    host: 192.168.248.134                  # Redis服务器地址
+#    port: 6379                             # Redis服务器连接端口
+#    password:                             # Redis服务器连接密码（默认为空）
+#    jedis:                                # spirngboot1.x与2.x区别是2.x添加一个前缀jedis、1.x没有
+#      pool:
+#        max-active: 100                  # 连接池最大连接数（使用负值表示没有限制）
+#        max-idle: 10                     # 连接池中的最大空闲连接
+#        min-idle: 0                      # 连接池中的最小空闲连接
+#        max-wait: -1                     # 连接池最大阻塞等待时间（使用负值表示没有限制）
+#        timeout:  5000                       # 连接超时时间（毫秒），不能设置为0，时间太短连接不上会报错
+#  freemarker:
+#    allow-request-override: false
+#    request-context-attribute: req
+#    suffix: .ftl
+#    content-type: text/html;charset=utf-8
+#    enabled: true
+#    cache: false
+#    template-loader-path: classpath:/templates/
+#    charset: utf-8
+#    number_format: 0.##
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.tlzx.druiddemo.model
+
+logging:
+  level:
+    com.tlzx.druiddemo.model: debug
+
+
+
+
